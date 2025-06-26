@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limitless Mindset - Premium APK Mods</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8a2be2;
+            --secondary: #00ff99;
+            --dark: #0c0c1d;
+            --darker: #12122e;
+            --card-bg: rgba(30, 30, 46, 0.8);
+            --text-light: #e0e0e0;
+            --text-gray: #b0b0b0;
+            --donate: #ff9500;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--darker);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loading-spinner {
+            border: 5px solid rgba(138, 43, 226, 0.3);
+            border-radius: 50%;
+            border-top: 5px solid var(--primary);
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        .loading-text {
+            font-size: 24px;
+            font-weight: 600;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Top Banner */
+        .top-banner {
+            background: linear-gradient(90deg, var(--primary), #6a0dad);
+            padding: 15px 0;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+            position: relative;
+        }
+        
+        .brand-name {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-link.telegram {
+            background: linear-gradient(45deg, #0088cc, #00acee);
+        }
+        
+        .social-link.instagram {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+        
+        .social-link.donate {
+            background: linear-gradient(45deg, var(--donate), #ff5e3a);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            background: linear-gradient(135deg, var(--primary), #6a0dad);
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .search-bar {
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 8px 15px;
+            width: 300px;
+            margin-top: 10px;
+        }
+        
+        .search-bar input {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            width: 100%;
+            outline: none;
+        }
+        
+        .search-bar button {
+            background: transparent;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        /* Apps Grid */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .app-block {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .app-block:hover {
+            transform: translateY(-10px);
+            border-color: rgba(138, 43, 226, 0.5);
+        }
+        
+        .app-card {
+            background: rgba(40, 40, 60, 0.5);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .app-card:hover {
+            background: rgba(50, 50, 70, 0.7);
+        }
+        
+        .app-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            background: linear-gradient(135deg, var(--primary), #6a0dad);
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .app-logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            object-fit: cover;
+        }
+        
+        .app-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .app-category {
+            color: var(--text-gray);
+            font-size: 14px;
+            margin-bottom: 15px;
+            min-height: 40px;
+        }
+        
+        .app-meta {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+            font-size: 14px;
+            color: var(--primary);
+        }
+        
+        .app-version, .app-android {
+            background: rgba(138, 43, 226, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .download-btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
+            margin: 30px 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 1px solid #2d2d4d;
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        /* Details Page */
+        .details-page {
+            display: none;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(138, 43, 226, 0.2);
+            color: var(--secondary);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .back-btn:hover {
+            background: rgba(138, 43, 226, 0.3);
+            transform: translateX(-5px);
+        }
+        
+        .app-details {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .details-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .details-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            background: linear-gradient(135deg, var(--primary), #6a0dad);
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .details-logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            object-fit: cover;
+        }
+        
+        .details-info h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .details-category {
+            font-size: 18px;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .details-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .meta-item {
+            background: rgba(138, 43, 226, 0.2);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .features-section {
+            margin: 30px 0;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background: rgba(138, 43, 226, 0.15);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        .feature-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .details-download {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .big-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            font-size: 20px;
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .big-download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(138, 43, 226, 0.6);
+            background: linear-gradient(45deg, #7a1ee0, #00e68a);
+        }
+        
+        .download-info {
+            margin-top: 20px;
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .app-block, .app-details {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 40px 0;
+        }
+        
+        .pagination button {
+            background: #ffffff10;
+            border: none;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            min-width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .pagination button.active {
+            background: var(--secondary);
+            color: #000;
+        }
+        
+        .pagination button:hover:not(.active) {
+            background: var(--primary);
+        }
+        
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        @media (max-width: 900px) {
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .app-block {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .search-bar {
+                width: 100%;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .details-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .details-meta {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading Premium APKs</div>
+    </div>
+    
+    <div class="container">
+        <!-- Top Banner with Brand and Social Links -->
+        <div class="top-banner">
+            <div class="brand-name">LIMITLESS MINDSET</div>
+            <div class="social-links">
+                <a href="https://t.me/limitlessmindset770" class="social-link telegram" target="_blank">
+                    <i class="fab fa-telegram"></i> Telegram Channel
+                </a>
+                <a href="https://www.instagram.com/limitless_mindset_02?igsh=MTdoOW92eDh5Njc4dQ==" class="social-link instagram" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://razorpay.me/@limitlessmodes" class="social-link donate" target="_blank">
+                    <i class="fas fa-donate"></i> Donate & Support
+                </a>
+            </div>
+        </div>
+        
+        <!-- Header with Logo and Search -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="logo-text">APK Premium Mods</div>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for apps..." id="searchInput">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="apps-grid" id="appsGrid">
+                <!-- Apps will be loaded dynamically from Firebase -->
+            </div>
+            
+            <div class="pagination" id="pagination"></div>
+        </main>
+        
+        <!-- Details Page Content -->
+        <div class="details-page" id="detailsPage">
+            <button class="back-btn" id="backBtn">
+                <i class="fas fa-arrow-left"></i> Back to Apps
+            </button>
+            
+            <div class="app-details" id="appDetails">
+                <!-- Details will be loaded dynamically -->
+            </div>
+        </div>
+        
+        <div class="section-divider"></div>
+        
+        <footer>
+            <p>© 2025 Limitless Mindset | All apps are verified and safe to download</p>
+            <p>Follow us on Telegram and Instagram for latest updates</p>
+            <p style="margin-top: 10px;">Support our work: <a href="https://razorpay.me/@limitlessmodes" class="social-link donate" target="_blank" style="font-size: 14px; padding: 5px 12px;">
+                <i class="fas fa-donate"></i> Donate
+            </a></p>
+        </footer>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+    
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBOHYMegVGz1h8F7Qc5pjzFJOQDA_Jpps0",
+            authDomain: "karan-e2dd3.firebaseapp.com",
+            databaseURL: "https://karan-e2dd3-default-rtdb.firebaseio.com",
+            projectId: "karan-e2dd3",
+            storageBucket: "karan-e2dd3.firebasestorage.app",
+            messagingSenderId: "78513528568",
+            appId: "1:78513528568:web:505465fc3a49ce3208250d"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+        const apksRef = database.ref('apks');
+        
+        // DOM Elements
+        const appsGrid = document.getElementById('appsGrid');
+        const detailsPage = document.getElementById('detailsPage');
+        const appDetails = document.getElementById('appDetails');
+        const backBtn = document.getElementById('backBtn');
+        const searchInput = document.getElementById('searchInput');
+        const pagination = document.getElementById('pagination');
+        const loadingScreen = document.getElementById('loading-screen');
+        
+        // Pagination variables
+        const appsPerPage = 6;
+        let currentPage = 1;
+        let allApps = [];
+        let filteredApps = [];
+        
+        // Hide content initially
+        document.querySelector('.container').style.opacity = '0';
+        
+        // Show loading screen for 3 seconds
+        setTimeout(() => {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+                document.querySelector('.container').style.opacity = '1';
+            }, 500);
+        }, 3000);
+        
+        // Back to main page
+        backBtn.addEventListener('click', () => {
+            detailsPage.style.display = 'none';
+            document.querySelector('.main-content').style.display = 'block';
+        });
+        
+        // Search functionality
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            if (searchTerm === '') {
+                filteredApps = [...allApps];
+            } else {
+                filteredApps = allApps.filter(app => 
+                    app.name.toLowerCase().includes(searchTerm) || 
+                    app.category.toLowerCase().includes(searchTerm)
+                );
+            }
+            currentPage = 1;
+            renderApps();
+        });
+        
+        // Load apps from Firebase
+        apksRef.on('value', (snapshot) => {
+            const data = snapshot.val();
+            allApps = [];
+            
+            if (data) {
+                for (const key in data) {
+                    allApps.push({
+                        id: key,
+                        ...data[key]
+                    });
+                }
+            }
+            
+            filteredApps = [...allApps];
+            renderApps();
+        });
+        
+        // Render apps with pagination
+        function renderApps() {
+            const startIndex = (currentPage - 1) * appsPerPage;
+            const endIndex = startIndex + appsPerPage;
+            const appsToShow = filteredApps.slice(startIndex, endIndex);
+            
+            appsGrid.innerHTML = '';
+            
+            if (appsToShow.length === 0) {
+                appsGrid.innerHTML = '<p class="error-message">No apps found. Try a different search term.</p>';
+                renderPagination();
+                return;
+            }
+            
+            // Group apps into pairs
+            for (let i = 0; i < appsToShow.length; i += 2) {
+                const appBlock = document.createElement('div');
+                appBlock.className = 'app-block';
+                
+                // First app in the pair
+                if (appsToShow[i]) {
+                    appBlock.appendChild(createAppCard(appsToShow[i]));
+                }
+                
+                // Second app in the pair
+                if (appsToShow[i + 1]) {
+                    appBlock.appendChild(createAppCard(appsToShow[i + 1]));
+                }
+                
+                appsGrid.appendChild(appBlock);
+            }
+            
+            renderPagination();
+        }
+        
+        // Create app card element
+        function createAppCard(app) {
+            const appCard = document.createElement('div');
+            appCard.className = 'app-card';
+            appCard.dataset.id = app.id;
+            
+            let logoContent = '';
+            if (app.logo.startsWith('http') || app.logo.startsWith('data:image')) {
+                logoContent = `<img src="${app.logo}" alt="${app.name}">`;
+            } else {
+                logoContent = `<i class="${app.logo}"></i>`;
+            }
+            
+            appCard.innerHTML = `
+                <div class="app-logo">
+                    ${logoContent}
+                </div>
+                <div class="app-name">${app.name}</div>
+                <div class="app-category">${app.category}</div>
+                <div class="app-meta">
+                    <div class="app-android">${app.android}</div>
+                    <div class="app-version">${app.version}</div>
+                </div>
+                <button class="download-btn" data-id="${app.id}">
+                    <i class="fas fa-download"></i> Download APK
+                </button>
+            `;
+            
+            appCard.querySelector('.download-btn').addEventListener('click', (e) => {
+                showDetailsPage(e.target.dataset.id);
+            });
+            
+            return appCard;
+        }
+        
+        // Render pagination
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredApps.length / appsPerPage);
+            const paginationEl = document.getElementById('pagination');
+            paginationEl.innerHTML = '';
+            
+            // Only show pagination if there are more than 6 apps
+            if (totalPages <= 1) return;
+            
+            // Previous button
+            const prevBtn = document.createElement('button');
+            prevBtn.innerHTML = '&laquo;';
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.title = "Previous Page";
+            prevBtn.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    renderApps();
+                }
+            });
+            paginationEl.appendChild(prevBtn);
+            
+            // Page buttons
+            for (let i = 1; i <= totalPages; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.textContent = i;
+                if (i === currentPage) pageBtn.classList.add('active');
+                
+                pageBtn.addEventListener('click', () => {
+                    currentPage = i;
+                    renderApps();
+                });
+                
+                paginationEl.appendChild(pageBtn);
+            }
+            
+            // Next button
+            const nextBtn = document.createElement('button');
+            nextBtn.innerHTML = '&raquo;';
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.title = "Next Page";
+            nextBtn.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    renderApps();
+                }
+            });
+            paginationEl.appendChild(nextBtn);
+        }
+        
+        // Show details page
+        function showDetailsPage(appId) {
+            const app = allApps.find(a => a.id === appId);
+            if (!app) return;
+            
+            let logoContent = '';
+            if (app.logo.startsWith('http') || app.logo.startsWith('data:image')) {
+                logoContent = `<img src="${app.logo}" alt="${app.name}">`;
+            } else {
+                logoContent = `<i class="${app.logo}"></i>`;
+            }
+            
+            const featuresHTML = app.features.map(feature => `
+                <div class="feature-card">
+                    <h3><i class="fas fa-star"></i> ${feature}</h3>
+                </div>
+            `).join('');
+            
+            appDetails.innerHTML = `
+                <div class="details-header">
+                    <div class="details-logo">
+                        ${logoContent}
+                    </div>
+                    <div class="details-info">
+                        <h1>${app.name}</h1>
+                        <div class="details-category">${app.category}</div>
+                        <div class="details-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-android"></i>
+                                <span>${app.android}</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-code"></i>
+                                <span>Version: ${app.version}</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-download"></i>
+                                <span>Size: ${app.size}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="features-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-star"></i> MOD Features
+                    </h2>
+                    <div class="features-grid">
+                        ${featuresHTML}
+                    </div>
+                </div>
+                
+                <div class="features-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-info-circle"></i> App Description
+                    </h2>
+                    <p>${app.description}</p>
+                </div>
+                
+                <div class="details-download">
+                    <button class="big-download-btn" data-link="${app.link}">
+                        <i class="fas fa-download"></i> Download MOD APK (${app.size})
+                    </button>
+                    <p class="download-info">
+                        File Name: ${app.name.replace(/\s+/g, '_')}_MOD_v${app.version}.apk | Version: ${app.version} | Last Updated: ${new Date().toISOString().split('T')[0]}
+                    </p>
+                </div>
+            `;
+            
+            // Add download event
+            appDetails.querySelector('.big-download-btn').addEventListener('click', (e) => {
+                window.open(e.target.dataset.link, '_blank');
+            });
+            
+            // Show details page
+            document.querySelector('.main-content').style.display = 'none';
+            detailsPage.style.display = 'block';
+        }
+        
+        // Initialize with demo data if Firebase is empty
+        function initializeDemoData() {
+            apksRef.once('value', (snapshot) => {
+                if (!snapshot.exists()) {
+                    const demoApps = {
+                        "drama_pops": {
+                            name: "Drama Pops - TV de serie corta",
+                            android: "5.0+",
+                            version: "21.2",
+                            size: "25 MB",
+                            features: ["Premium Unlocked", "No Ads", "HD Streaming"],
+                            description: "Watch short drama series with premium features unlocked",
+                            logo: "fas fa-film",
+                            link: "#",
+                            category: "Entertainment"
+                        },
+                        "inshot": {
+                            name: "InShot Pro",
+                            android: "6.0+",
+                            version: "2.134.1492",
+                            size: "45 MB",
+                            features: ["Pro Features Unlocked", "No Watermark", "All Filters"],
+                            description: "Professional video editor with premium features unlocked",
+                            logo: "fas fa-camera",
+                            link: "#",
+                            category: "Photography"
+                        },
+                        "spotify": {
+                            name: "Spotify Premium",
+                            android: "7.0+",
+                            version: "8.9.40.512",
+                            size: "85 MB",
+                            features: ["Ad-free", "Unlimited Skips", "Extreme Quality"],
+                            description: "Listen to your favorite music without ads or restrictions",
+                            logo: "fab fa-spotify",
+                            link: "#",
+                            category: "Music"
+                        },
+                        "youtube": {
+                            name: "YouTube Premium",
+                            android: "8.0+",
+                            version: "18.45.43",
+                            size: "120 MB",
+                            features: ["Ad-free", "Background Play", "Download Videos"],
+                            description: "Enjoy YouTube without ads and with premium features",
+                            logo: "fab fa-youtube",
+                            link: "#",
+                            category: "Video"
+                        },
+                        "whatsapp": {
+                            name: "WhatsApp Plus",
+                            android: "5.0+",
+                            version: "2.23.25.84",
+                            size: "55 MB",
+                            features: ["Custom Themes", "Enhanced Privacy", "Increased Limits"],
+                            description: "Enhanced version of WhatsApp with additional features",
+                            logo: "fab fa-whatsapp",
+                            link: "#",
+                            category: "Communication"
+                        },
+                        "netflix": {
+                            name: "Netflix Premium",
+                            android: "6.0+",
+                            version: "8.102.0",
+                            size: "95 MB",
+                            features: ["Premium Unlocked", "4K Streaming", "No Ads"],
+                            description: "Stream movies and TV shows with premium features",
+                            logo: "fas fa-play-circle",
+                            link: "#",
+                            category: "Entertainment"
+                        },
+                        "tiktok": {
+                            name: "TikTok Pro",
+                            android: "7.0+",
+                            version: "31.2.5",
+                            size: "110 MB",
+                            features: ["No Watermark", "Ad-free", "Premium Effects"],
+                            description: "Create and watch videos with premium features",
+                            logo: "fab fa-tiktok",
+                            link: "#",
+                            category: "Social"
+                        },
+                        "snapseed": {
+                            name: "Snapseed Pro",
+                            android: "6.0+",
+                            version: "2.22.0",
+                            size: "65 MB",
+                            features: ["Pro Filters", "No Watermark", "Advanced Tools"],
+                            description: "Professional photo editing app with premium features",
+                            logo: "fas fa-image",
+                            link: "#",
+                            category: "Photography"
+                        }
+                    };
+                    
+                    apksRef.set(demoApps);
+                }
+            });
+        }
+        
+        // Initialize the app
+        initializeDemoData();
+    </script>
+
+    <!-- Native Banner Ad Container -->
+    <div id="container-cc9a791c0d2e17a37baf3d5e01ad7f93"></div>
+    
+    <!-- Ad Scripts -->
+    <script type='text/javascript' src='//pl26931944.profitableratecpm.com/fd/69/f7/fd69f725dc6f41b88c230756c9ef8d07.js'></script>
+    <script type='text/javascript' src='//pl26931902.profitableratecpm.com/3c/db/f2/3cdbf295bee26f615d0d99adeb107283.js'></script>
+    <script async="async" data-cfasync="false" src="//pl27014246.profitableratecpm.com/cc9a791c0d2e17a37baf3d5e01ad7f93/invoke.js"></script>
+</body>
+</html>
