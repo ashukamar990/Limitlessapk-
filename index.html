@@ -33,14 +33,11 @@
             padding: 20px;
             line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            position: relative;
-            z-index: 10;
         }
         
         /* Loading Screen */
@@ -554,111 +551,41 @@
             cursor: not-allowed;
         }
         
-        /* Ad Styles */
+        /* Ad containers */
         .ad-container {
-            width: 100%;
-            margin: 25px 0;
-            text-align: center;
+            margin: 30px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--light-bg);
+            border: 1px solid var(--border);
             padding: 15px;
-            background: #f8f9fa;
-            border-radius: 12px;
-            border: 1px solid #eaeaea;
-        }
-        
-        .ad-banner {
-            width: 100%;
-            max-width: 728px;
-            height: 90px;
-            background: linear-gradient(45deg, #4a6cf7, #8a2be2);
-            margin: 0 auto;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
         }
         
         .ad-label {
+            display: block;
+            text-align: center;
+            margin-bottom: 10px;
             font-size: 12px;
-            color: #6c757d;
-            margin-bottom: 8px;
+            color: var(--text-gray);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         
-        .ad-redirect-overlay {
+        .native-banner {
+            max-width: 100%;
+            margin: 40px auto;
+            text-align: center;
+        }
+        
+        .popunder-ad {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-        }
-        
-        .ad-redirect-content {
-            text-align: center;
-            max-width: 500px;
-            padding: 30px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-        
-        .ad-redirect-content h2 {
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .ad-redirect-content p {
-            margin-bottom: 25px;
-            font-size: 18px;
-            color: var(--text-gray);
-        }
-        
-        .redirect-timer {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--secondary);
-            margin: 20px 0;
-        }
-        
-        .redirect-actions {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-        }
-        
-        .redirect-btn {
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s;
-            border: none;
-        }
-        
-        .redirect-btn.primary {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .redirect-btn.secondary {
-            background: #f1f3f5;
-            color: var(--text-dark);
-        }
-        
-        .redirect-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            z-index: -9999;
         }
         
         @media (max-width: 900px) {
@@ -668,11 +595,6 @@
             
             .features-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .ad-banner {
-                height: 70px;
-                font-size: 16px;
             }
         }
         
@@ -710,31 +632,19 @@
             .details-logo {
                 margin: 0 auto;
             }
-            
-            .redirect-actions {
-                flex-direction: column;
-            }
         }
     </style>
 </head>
 <body>
+    <!-- Popunder Ad (hidden) -->
+    <div class="popunder-ad">
+        <script type='text/javascript' src='//pl27215212.profitableratecpm.com/95/bc/94/95bc9439591742b1d03c1e1d55fc89e6.js'></script>
+    </div>
+    
     <!-- Loading Screen -->
     <div id="loading-screen">
         <div class="loading-spinner"></div>
         <div class="loading-text">Loading Premium APKs</div>
-    </div>
-    
-    <!-- Ad Redirect Overlay -->
-    <div id="adRedirectOverlay" class="ad-redirect-overlay" style="display: none;">
-        <div class="ad-redirect-content">
-            <h2><i class="fas fa-gift"></i> Special Offer for You!</h2>
-            <p>We're redirecting you to an exclusive offer. Please check it out to support our website.</p>
-            <div class="redirect-timer" id="redirectTimer">Redirecting in 5 seconds...</div>
-            <div class="redirect-actions">
-                <button class="redirect-btn primary" id="continueRedirect">Continue to Offer</button>
-                <button class="redirect-btn secondary" id="cancelRedirect">Cancel</button>
-            </div>
-        </div>
     </div>
     
     <div class="container">
@@ -768,14 +678,6 @@
             </div>
         </header>
         
-        <!-- First Ad Unit -->
-        <div class="ad-container">
-            <div class="ad-label">Advertisement</div>
-            <div id="adContainer1" class="ad-banner">
-                <script type='text/javascript' src='//pl27215212.profitableratecpm.com/95/bc/94/95bc9439591742b1d03c1e1d55fc89e6.js'></script>
-            </div>
-        </div>
-        
         <!-- Main Content -->
         <main class="main-content">
             <div class="apps-grid" id="appsGrid">
@@ -785,13 +687,10 @@
             <div class="pagination" id="pagination"></div>
         </main>
         
-        <!-- Second Ad Unit -->
+        <!-- Direct Link Ad -->
         <div class="ad-container">
-            <div class="ad-label">Advertisement</div>
-            <div id="adContainer2">
-                <script async="async" data-cfasync="false" src="//pl27215242.profitableratecpm.com/f3cd3d1927bf582f7da0e07dc4c90514/invoke.js"></script>
-                <div id="container-f3cd3d1927bf582f7da0e07dc4c90514"></div>
-            </div>
+            <span class="ad-label">Advertisement</span>
+            <iframe src="https://www.profitableratecpm.com/ar8sgpn4p1?key=1a0e6856fc38d48332336d60cd22fe0f" style="width:100%; height:250px; border:none;"></iframe>
         </div>
         
         <!-- Details Page Content -->
@@ -807,6 +706,13 @@
         
         <div class="section-divider"></div>
         
+        <!-- Native Banner Ad at the bottom -->
+        <div class="native-banner">
+            <span class="ad-label">Advertisement</span>
+            <script async="async" data-cfasync="false" src="//pl27215242.profitableratecpm.com/f3cd3d1927bf582f7da0e07dc4c90514/invoke.js"></script>
+            <div id="container-f3cd3d1927bf582f7da0e07dc4c90514"></div>
+        </div>
+        
         <footer>
             <p>© 2025 Limitless Mindset | All apps are verified and safe to download</p>
             <p>Follow us on Telegram and Instagram for latest updates</p>
@@ -816,14 +722,6 @@
                 </a>
             </p>
         </footer>
-        
-        <!-- Third Ad (Banner at the very bottom) -->
-        <div class="ad-container" style="margin-top: 40px; margin-bottom: 0;">
-            <div class="ad-label">Advertisement</div>
-            <div class="ad-banner">
-                <h3>Premium Partner Offer</h3>
-            </div>
-        </div>
     </div>
 
     <!-- Firebase SDK -->
@@ -855,18 +753,12 @@
         const searchInput = document.getElementById('searchInput');
         const pagination = document.getElementById('pagination');
         const loadingScreen = document.getElementById('loading-screen');
-        const adRedirectOverlay = document.getElementById('adRedirectOverlay');
-        const redirectTimer = document.getElementById('redirectTimer');
-        const continueRedirect = document.getElementById('continueRedirect');
-        const cancelRedirect = document.getElementById('cancelRedirect');
         
         // Pagination variables
         const appsPerPage = 6;
         let currentPage = 1;
         let allApps = [];
         let filteredApps = [];
-        let redirectCountdown = 5;
-        let redirectInterval;
         
         // Hide content initially
         document.querySelector('.container').style.opacity = '0';
@@ -878,10 +770,11 @@
                 loadingScreen.style.display = 'none';
                 document.querySelector('.container').style.opacity = '1';
                 
-                // Show ad redirect overlay after 8 seconds
+                // Trigger popunder after page load
                 setTimeout(() => {
-                    showAdRedirect();
-                }, 8000);
+                    const popunder = document.querySelector('.popunder-ad');
+                    if(popunder) popunder.style.display = 'block';
+                }, 1000);
             }, 500);
         }, 3000);
         
@@ -1209,39 +1102,6 @@
                 }
             });
         }
-        
-        // Show ad redirect overlay
-        function showAdRedirect() {
-            adRedirectOverlay.style.display = 'flex';
-            redirectCountdown = 5;
-            updateRedirectTimer();
-            
-            redirectInterval = setInterval(() => {
-                redirectCountdown--;
-                updateRedirectTimer();
-                
-                if (redirectCountdown <= 0) {
-                    clearInterval(redirectInterval);
-                    window.location.href = "https://www.profitableratecpm.com/ar8sgpn4p1?key=1a0e6856fc38d48332336d60cd22fe0f";
-                }
-            }, 1000);
-        }
-        
-        // Update redirect timer display
-        function updateRedirectTimer() {
-            redirectTimer.textContent = `Redirecting in ${redirectCountdown} seconds...`;
-        }
-        
-        // Event listeners for redirect buttons
-        continueRedirect.addEventListener('click', () => {
-            clearInterval(redirectInterval);
-            window.location.href = "https://www.profitableratecpm.com/ar8sgpn4p1?key=1a0e6856fc38d48332336d60cd22fe0f";
-        });
-        
-        cancelRedirect.addEventListener('click', () => {
-            clearInterval(redirectInterval);
-            adRedirectOverlay.style.display = 'none';
-        });
         
         // Initialize the app
         initializeDemoData();
