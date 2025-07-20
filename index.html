@@ -7,14 +7,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #8a2be2;
-            --secondary: #00ff99;
-            --dark: #0c0c1d;
-            --darker: #12122e;
-            --card-bg: rgba(30, 30, 46, 0.8);
-            --text-light: #e0e0e0;
-            --text-gray: #b0b0b0;
-            --donate: #ff9500;
+            --primary: #4a6cf7;
+            --secondary: #10b981;
+            --accent: #8a2be2;
+            --light-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-dark: #212529;
+            --text-gray: #6c757d;
+            --text-light: #495057;
+            --border: #eaeaea;
+            --shadow: rgba(0, 0, 0, 0.05);
         }
         
         * {
@@ -25,8 +27,8 @@
         }
         
         body {
-            background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
-            color: var(--text-light);
+            background: #ffffff;
+            color: var(--text-dark);
             min-height: 100vh;
             padding: 20px;
             line-height: 1.6;
@@ -45,7 +47,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--darker);
+            background: #ffffff;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -55,7 +57,7 @@
         }
         
         .loading-spinner {
-            border: 5px solid rgba(138, 43, 226, 0.3);
+            border: 5px solid rgba(74, 108, 247, 0.1);
             border-radius: 50%;
             border-top: 5px solid var(--primary);
             width: 60px;
@@ -67,10 +69,7 @@
         .loading-text {
             font-size: 24px;
             font-weight: 600;
-            background: linear-gradient(45deg, var(--secondary), var(--primary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text-dark);
         }
         
         @keyframes spin {
@@ -80,22 +79,21 @@
         
         /* Top Banner */
         .top-banner {
-            background: linear-gradient(90deg, var(--primary), #6a0dad);
-            padding: 15px 0;
+            background: linear-gradient(90deg, var(--primary), #3a5be0);
+            padding: 20px 0;
             text-align: center;
-            border-radius: 10px 10px 0 0;
+            border-radius: 12px;
             margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+            box-shadow: 0 4px 12px rgba(74, 108, 247, 0.15);
             position: relative;
+            color: white;
         }
         
         .brand-name {
             font-size: 32px;
             font-weight: 800;
-            margin-bottom: 10px;
-            color: white;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            letter-spacing: 1px;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
         }
         
         .social-links {
@@ -110,31 +108,31 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 20px;
+            padding: 10px 20px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.15);
             color: white;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
         }
         
         .social-link.telegram {
-            background: linear-gradient(45deg, #0088cc, #00acee);
+            background: rgba(0, 136, 204, 0.9);
         }
         
         .social-link.instagram {
-            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            background: linear-gradient(45deg, #405DE6, #833AB4, #E1306C);
         }
         
         .social-link.donate {
-            background: linear-gradient(45deg, var(--donate), #ff5e3a);
+            background: linear-gradient(45deg, #ff9500, #ff5e3a);
         }
         
         .social-link:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
         /* Header */
@@ -145,6 +143,7 @@
             padding: 20px 0;
             margin-bottom: 30px;
             flex-wrap: wrap;
+            border-bottom: 1px solid var(--border);
         }
         
         .logo {
@@ -154,7 +153,7 @@
         }
         
         .logo-icon {
-            background: linear-gradient(135deg, var(--primary), #6a0dad);
+            background: linear-gradient(135deg, var(--primary), #3a5be0);
             width: 50px;
             height: 50px;
             border-radius: 15px;
@@ -163,99 +162,95 @@
             justify-content: center;
             font-size: 24px;
             color: white;
+            box-shadow: 0 4px 8px rgba(74, 108, 247, 0.3);
         }
         
         .logo-text {
             font-size: 28px;
             font-weight: 700;
-            background: linear-gradient(45deg, var(--secondary), var(--primary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text-dark);
+        }
+        
+        .logo-text span {
+            color: var(--primary);
         }
         
         .search-bar {
             display: flex;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--light-bg);
             border-radius: 30px;
-            padding: 8px 15px;
+            padding: 0;
             width: 300px;
-            margin-top: 10px;
+            border: 1px solid var(--border);
+            overflow: hidden;
         }
         
         .search-bar input {
             background: transparent;
             border: none;
-            color: white;
-            padding: 5px 10px;
+            color: var(--text-dark);
+            padding: 12px 20px;
             width: 100%;
             outline: none;
+            font-size: 15px;
         }
         
         .search-bar button {
-            background: transparent;
+            background: var(--primary);
             border: none;
-            color: var(--primary);
+            color: white;
             cursor: pointer;
+            padding: 0 20px;
+            transition: background 0.3s ease;
+        }
+        
+        .search-bar button:hover {
+            background: #3a5be0;
         }
         
         /* Apps Grid */
         .apps-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
             margin-top: 20px;
         }
         
-        .app-block {
-            background: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(138, 43, 226, 0.2);
-            padding: 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .app-block:hover {
-            transform: translateY(-10px);
-            border-color: rgba(138, 43, 226, 0.5);
-        }
-        
         .app-card {
-            background: rgba(40, 40, 60, 0.5);
+            background: var(--card-bg);
             border-radius: 12px;
-            padding: 20px;
-            text-align: center;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            padding: 25px;
             position: relative;
         }
         
         .app-card:hover {
-            background: rgba(50, 50, 70, 0.7);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            border-color: rgba(74, 108, 247, 0.3);
         }
         
         .app-logo {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 15px;
-            border-radius: 15px;
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
-            background: linear-gradient(135deg, var(--primary), #6a0dad);
+            font-size: 30px;
+            background: linear-gradient(135deg, var(--primary), #3a5be0);
             color: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(74, 108, 247, 0.2);
         }
         
         .app-logo img {
             width: 100%;
             height: 100%;
-            border-radius: 15px;
+            border-radius: 18px;
             object-fit: cover;
         }
         
@@ -263,41 +258,40 @@
             font-size: 18px;
             font-weight: 700;
             margin-bottom: 10px;
-            color: white;
-            min-height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            color: var(--text-dark);
+            text-align: center;
         }
         
         .app-category {
-            color: var(--text-gray);
+            color: var(--secondary);
             font-size: 14px;
+            text-align: center;
             margin-bottom: 15px;
-            min-height: 40px;
+            font-weight: 600;
         }
         
         .app-meta {
             display: flex;
-            justify-content: space-around;
-            margin: 15px 0;
-            font-size: 14px;
-            color: var(--primary);
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            font-size: 13px;
         }
         
         .app-version, .app-android {
-            background: rgba(138, 43, 226, 0.2);
-            padding: 5px 10px;
-            border-radius: 20px;
+            background: rgba(74, 108, 247, 0.08);
+            padding: 6px 14px;
+            border-radius: 30px;
             font-weight: 600;
+            color: var(--primary);
         }
         
         .download-btn {
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 30px;
+            padding: 12px 20px;
+            border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -306,25 +300,24 @@
             gap: 8px;
             width: 100%;
             justify-content: center;
-            margin-top: 10px;
+            font-size: 15px;
         }
         
         .download-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(74, 108, 247, 0.3);
         }
         
         .section-divider {
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary), var(--secondary), transparent);
-            margin: 30px 0;
+            background: var(--border);
+            margin: 40px 0;
         }
         
         footer {
             text-align: center;
             padding: 30px 0;
             margin-top: 50px;
-            border-top: 1px solid #2d2d4d;
             color: var(--text-gray);
             font-size: 14px;
         }
@@ -338,162 +331,174 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 20px;
-            background: rgba(138, 43, 226, 0.2);
-            color: var(--secondary);
+            padding: 12px 25px;
+            background: var(--light-bg);
+            color: var(--text-dark);
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 8px;
             font-weight: 600;
             transition: all 0.3s ease;
             margin-bottom: 30px;
-            border: none;
+            border: 1px solid var(--border);
             cursor: pointer;
+            font-size: 15px;
         }
         
         .back-btn:hover {
-            background: rgba(138, 43, 226, 0.3);
-            transform: translateX(-5px);
+            background: #f1f3f5;
+            border-color: #dee2e6;
         }
         
         .app-details {
             background: var(--card-bg);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            padding: 40px;
             margin-bottom: 30px;
+            border: 1px solid var(--border);
         }
         
         .details-header {
             display: flex;
             align-items: center;
-            gap: 25px;
-            margin-bottom: 30px;
+            gap: 30px;
+            margin-bottom: 40px;
         }
         
         .details-logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 20px;
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 48px;
-            background: linear-gradient(135deg, var(--primary), #6a0dad);
+            background: linear-gradient(135deg, var(--primary), #3a5be0);
             color: white;
             flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(74, 108, 247, 0.2);
         }
         
         .details-logo img {
             width: 100%;
             height: 100%;
-            border-radius: 20px;
+            border-radius: 24px;
             object-fit: cover;
         }
         
         .details-info h1 {
-            font-size: 32px;
-            margin-bottom: 15px;
-            color: white;
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
         }
         
         .details-category {
             font-size: 18px;
             color: var(--secondary);
             margin-bottom: 20px;
+            font-weight: 600;
         }
         
         .details-meta {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             margin-bottom: 30px;
             flex-wrap: wrap;
         }
         
         .meta-item {
-            background: rgba(138, 43, 226, 0.2);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 16px;
+            background: rgba(74, 108, 247, 0.08);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
             display: flex;
             align-items: center;
             gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
         }
         
         .features-section {
-            margin: 30px 0;
+            margin: 40px 0;
         }
         
         .section-title {
             font-size: 24px;
-            margin-bottom: 20px;
-            color: var(--secondary);
+            margin-bottom: 25px;
+            color: var(--text-dark);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-weight: 700;
+        }
+        
+        .section-title i {
+            color: var(--primary);
         }
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
             margin: 20px 0;
         }
         
         .feature-card {
-            background: rgba(138, 43, 226, 0.15);
+            background: rgba(74, 108, 247, 0.03);
             border-radius: 12px;
-            padding: 20px;
+            padding: 25px;
             transition: all 0.3s ease;
-            border-left: 3px solid var(--secondary);
+            border-left: 4px solid var(--primary);
         }
         
         .feature-card h3 {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 10px;
-            color: white;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+            font-size: 18px;
         }
         
         .feature-card p {
             color: var(--text-gray);
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.6;
         }
         
         .details-download {
             text-align: center;
-            margin: 40px 0;
+            margin: 50px 0 20px;
         }
         
         .big-download-btn {
             display: inline-flex;
             align-items: center;
             gap: 15px;
-            padding: 15px 40px;
+            padding: 18px 45px;
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             color: white;
             text-decoration: none;
-            border-radius: 15px;
+            border-radius: 12px;
             font-weight: 700;
             transition: all 0.3s ease;
-            font-size: 20px;
-            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.4);
+            font-size: 18px;
+            box-shadow: 0 8px 20px rgba(74, 108, 247, 0.3);
             border: none;
             cursor: pointer;
         }
         
         .big-download-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(138, 43, 226, 0.6);
-            background: linear-gradient(45deg, #7a1ee0, #00e68a);
+            box-shadow: 0 12px 30px rgba(74, 108, 247, 0.4);
         }
         
         .download-info {
             margin-top: 20px;
             color: var(--text-gray);
             font-size: 14px;
+            line-height: 1.6;
         }
         
         /* Animation */
@@ -502,7 +507,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .app-block, .app-details {
+        .app-card, .app-details {
             animation: fadeIn 0.6s ease-out;
         }
         
@@ -516,27 +521,29 @@
         }
         
         .pagination button {
-            background: #ffffff10;
-            border: none;
-            color: #fff;
-            padding: 10px 15px;
+            background: var(--light-bg);
+            border: 1px solid var(--border);
+            color: var(--text-dark);
+            padding: 10px 16px;
             border-radius: 8px;
             cursor: pointer;
-            font-weight: bold;
+            font-weight: 600;
             transition: all 0.3s ease;
             min-width: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 14px;
         }
         
         .pagination button.active {
-            background: var(--secondary);
-            color: #000;
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
         }
         
         .pagination button:hover:not(.active) {
-            background: var(--primary);
+            background: #f1f3f5;
         }
         
         .pagination button:disabled {
@@ -546,11 +553,7 @@
         
         @media (max-width: 900px) {
             .apps-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .app-block {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
             
             .features-grid {
@@ -562,10 +565,17 @@
             header {
                 flex-direction: column;
                 gap: 20px;
+                text-align: center;
+            }
+            
+            .logo {
+                justify-content: center;
             }
             
             .search-bar {
                 width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
             }
             
             .social-links {
@@ -579,8 +589,11 @@
             }
             
             .details-meta {
-                flex-direction: column;
-                align-items: center;
+                justify-content: center;
+            }
+            
+            .details-logo {
+                margin: 0 auto;
             }
         }
     </style>
@@ -615,7 +628,7 @@
                 <div class="logo-icon">
                     <i class="fas fa-mobile-alt"></i>
                 </div>
-                <div class="logo-text">APK Premium Mods</div>
+                <div class="logo-text">APK <span>Premium</span> Mods</div>
             </div>
             <div class="search-bar">
                 <input type="text" placeholder="Search for apps..." id="searchInput">
@@ -648,9 +661,11 @@
         <footer>
             <p>© 2025 Limitless Mindset | All apps are verified and safe to download</p>
             <p>Follow us on Telegram and Instagram for latest updates</p>
-            <p style="margin-top: 10px;">Support our work: <a href="https://razorpay.me/@limitlessmodes" class="social-link donate" target="_blank" style="font-size: 14px; padding: 5px 12px;">
-                <i class="fas fa-donate"></i> Donate
-            </a></p>
+            <p style="margin-top: 15px;">
+                <a href="https://razorpay.me/@limitlessmodes" class="social-link donate" target="_blank" style="font-size: 14px; padding: 8px 18px; display: inline-flex; align-items: center;">
+                    <i class="fas fa-donate"></i> Support Our Work
+                </a>
+            </p>
         </footer>
     </div>
 
@@ -750,28 +765,14 @@
             appsGrid.innerHTML = '';
             
             if (appsToShow.length === 0) {
-                appsGrid.innerHTML = '<p class="error-message">No apps found. Try a different search term.</p>';
+                appsGrid.innerHTML = '<p class="error-message" style="text-align: center; grid-column: 1/-1; padding: 40px; color: var(--text-gray);">No apps found. Try a different search term.</p>';
                 renderPagination();
                 return;
             }
             
-            // Group apps into pairs
-            for (let i = 0; i < appsToShow.length; i += 2) {
-                const appBlock = document.createElement('div');
-                appBlock.className = 'app-block';
-                
-                // First app in the pair
-                if (appsToShow[i]) {
-                    appBlock.appendChild(createAppCard(appsToShow[i]));
-                }
-                
-                // Second app in the pair
-                if (appsToShow[i + 1]) {
-                    appBlock.appendChild(createAppCard(appsToShow[i + 1]));
-                }
-                
-                appsGrid.appendChild(appBlock);
-            }
+            appsToShow.forEach(app => {
+                appsGrid.appendChild(createAppCard(app));
+            });
             
             renderPagination();
         }
@@ -875,7 +876,7 @@
             
             const featuresHTML = app.features.map(feature => `
                 <div class="feature-card">
-                    <h3><i class="fas fa-star"></i> ${feature}</h3>
+                    <h3><i class="fas fa-check-circle" style="color: var(--secondary);"></i> ${feature}</h3>
                 </div>
             `).join('');
             
@@ -925,7 +926,8 @@
                         <i class="fas fa-download"></i> Download MOD APK (${app.size})
                     </button>
                     <p class="download-info">
-                        File Name: ${app.name.replace(/\s+/g, '_')}_MOD_v${app.version}.apk | Version: ${app.version} | Last Updated: ${new Date().toISOString().split('T')[0]}
+                        File Name: ${app.name.replace(/\s+/g, '_')}_MOD_v${app.version}.apk<br>
+                        Version: ${app.version} | Last Updated: ${new Date().toISOString().split('T')[0]}
                     </p>
                 </div>
             `;
@@ -1043,13 +1045,5 @@
         // Initialize the app
         initializeDemoData();
     </script>
-
-    <!-- Native Banner Ad Container -->
-    <div id="container-cc9a791c0d2e17a37baf3d5e01ad7f93"></div>
-    
-    <!-- Ad Scripts -->
-    <script type='text/javascript' src='//pl26931944.profitableratecpm.com/fd/69/f7/fd69f725dc6f41b88c230756c9ef8d07.js'></script>
-    <script type='text/javascript' src='//pl26931902.profitableratecpm.com/3c/db/f2/3cdbf295bee26f615d0d99adeb107283.js'></script>
-    <script async="async" data-cfasync="false" src="//pl27014246.profitableratecpm.com/cc9a791c0d2e17a37baf3d5e01ad7f93/invoke.js"></script>
 </body>
 </html>
