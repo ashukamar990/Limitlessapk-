@@ -17,6 +17,9 @@
             --text-light: #495057;
             --border: #eaeaea;
             --shadow: rgba(0, 0, 0, 0.05);
+            --ad-bg: #f8f9fa;
+            --ad-border: #eaeaea;
+            --ad-text: #6c757d;
         }
         
         * {
@@ -553,39 +556,76 @@
         
         /* Ad containers */
         .ad-container {
-            margin: 30px 0;
+            background-color: var(--ad-bg);
+            border: 1px solid var(--ad-border);
             border-radius: 12px;
-            overflow: hidden;
-            background: var(--light-bg);
-            border: 1px solid var(--border);
-            padding: 15px;
+            margin: 25px 0;
+            padding: 20px;
             text-align: center;
+            color: var(--ad-text);
+            position: relative;
+            overflow: hidden;
         }
         
         .ad-label {
-            display: block;
-            text-align: center;
-            margin-bottom: 10px;
-            font-size: 12px;
-            color: var(--text-gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .native-banner {
-            max-width: 100%;
-            margin: 40px auto;
-            text-align: center;
-        }
-        
-        .popunder-ad {
-            position: fixed;
+            position: absolute;
             top: 0;
-            left: 0;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-            z-index: -9999;
+            right: 0;
+            background: rgba(0,0,0,0.05);
+            color: var(--ad-text);
+            font-size: 10px;
+            padding: 4px 10px;
+            border-bottom-left-radius: 8px;
+        }
+        
+        .direct-ad-banner {
+            display: block;
+            width: 100%;
+            height: 90px;
+            background: linear-gradient(45deg, #4a6cf7, #8a2be2);
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .direct-ad-banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .direct-ad-banner h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .direct-ad-banner p {
+            font-size: 14px;
+            font-weight: normal;
+        }
+        
+        .native-banner-container {
+            margin: 30px 0;
+            text-align: center;
+            background: var(--ad-bg);
+            border: 1px solid var(--ad-border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .native-banner-label {
+            font-size: 12px;
+            color: var(--ad-text);
+            margin-bottom: 10px;
+            text-align: center;
         }
         
         @media (max-width: 900px) {
@@ -632,15 +672,18 @@
             .details-logo {
                 margin: 0 auto;
             }
+            
+            .direct-ad-banner h3 {
+                font-size: 16px;
+            }
+            
+            .direct-ad-banner p {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Popunder Ad (hidden) -->
-    <div class="popunder-ad">
-        <script type='text/javascript' src='//pl27215212.profitableratecpm.com/95/bc/94/95bc9439591742b1d03c1e1d55fc89e6.js'></script>
-    </div>
-    
     <!-- Loading Screen -->
     <div id="loading-screen">
         <div class="loading-spinner"></div>
@@ -662,6 +705,15 @@
                     <i class="fas fa-donate"></i> Donate & Support
                 </a>
             </div>
+        </div>
+        
+        <!-- Direct Link Ad Banner (Top) -->
+        <div class="ad-container">
+            <span class="ad-label">Advertisement</span>
+            <a href="https://www.profitableratecpm.com/ar8sgpn4p1?key=1a0e6856fc38d48332336d60cd22fe0f" target="_blank" class="direct-ad-banner">
+                <h3>Exclusive Offer For Our Users!</h3>
+                <p>Limited time special deals - Click to claim your discount</p>
+            </a>
         </div>
         
         <!-- Header with Logo and Search -->
@@ -687,10 +739,11 @@
             <div class="pagination" id="pagination"></div>
         </main>
         
-        <!-- Direct Link Ad -->
-        <div class="ad-container">
-            <span class="ad-label">Advertisement</span>
-            <iframe src="https://www.profitableratecpm.com/ar8sgpn4p1?key=1a0e6856fc38d48332336d60cd22fe0f" style="width:100%; height:250px; border:none;"></iframe>
+        <!-- Native Banner Ad -->
+        <div class="native-banner-container">
+            <div class="native-banner-label">Advertisement</div>
+            <script async="async" data-cfasync="false" src="//pl27215242.profitableratecpm.com/f3cd3d1927bf582f7da0e07dc4c90514/invoke.js"></script>
+            <div id="container-f3cd3d1927bf582f7da0e07dc4c90514"></div>
         </div>
         
         <!-- Details Page Content -->
@@ -706,13 +759,6 @@
         
         <div class="section-divider"></div>
         
-        <!-- Native Banner Ad at the bottom -->
-        <div class="native-banner">
-            <span class="ad-label">Advertisement</span>
-            <script async="async" data-cfasync="false" src="//pl27215242.profitableratecpm.com/f3cd3d1927bf582f7da0e07dc4c90514/invoke.js"></script>
-            <div id="container-f3cd3d1927bf582f7da0e07dc4c90514"></div>
-        </div>
-        
         <footer>
             <p>© 2025 Limitless Mindset | All apps are verified and safe to download</p>
             <p>Follow us on Telegram and Instagram for latest updates</p>
@@ -727,6 +773,9 @@
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+    
+    <!-- Popunder Ad Script -->
+    <script type='text/javascript' src='//pl27215212.profitableratecpm.com/95/bc/94/95bc9439591742b1d03c1e1d55fc89e6.js'></script>
     
     <script>
         // Firebase configuration
@@ -769,12 +818,6 @@
             setTimeout(() => {
                 loadingScreen.style.display = 'none';
                 document.querySelector('.container').style.opacity = '1';
-                
-                // Trigger popunder after page load
-                setTimeout(() => {
-                    const popunder = document.querySelector('.popunder-ad');
-                    if(popunder) popunder.style.display = 'block';
-                }, 1000);
             }, 500);
         }, 3000);
         
